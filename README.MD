@@ -1,6 +1,10 @@
 #### Setup
 
 ```bash
+https://wander-wise-api-1-7mqffet5fa-as.a.run.app/api-docs/api-docs/
+```
+
+```bash
 npm install && npm start
 ```
 
