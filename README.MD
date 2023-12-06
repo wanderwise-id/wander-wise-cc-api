@@ -1,8 +1,11 @@
-#### Setup
+#### REST-API DOCUMENTATION
 
 ```bash
-https://wander-wise-api-1-7mqffet5fa-as.a.run.app/api-docs/api-docs/
+https://wander-wise-api-1-7mqffet5fa-as.a.run.app/api-docs/
 ```
+
+#### Setup
+
 
 ```bash
 npm install && npm start
