@@ -21,7 +21,7 @@ npm install && npm start
 #### Routers
 
 - auth.js
-- jobs.js
+- posts.js
 
 #### User Model
 
@@ -65,7 +65,7 @@ Email Validation Regex
 Swagger UI
 
 ```yaml
-/jobs/{id}:
+/posts/{id}:
   parameters:
     - in: path
       name: id
