@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Jobs API
+  title: Posts API
   contact: {}
   version: '1.0'
 servers:
@@ -21,8 +21,8 @@ paths:
             schema:
               $ref: '#/components/schemas/RegisterUserRequest'
             example:
-              name: bob
-              email: bob@gmail.com
+              name: oreo
+              email: oreo@gmail.com
               password: secret
         required: true
       responses:
@@ -45,7 +45,7 @@ paths:
             schema:
               $ref: '#/components/schemas/LoginUserRequest'
             example:
-              email: susan@gmail.com
+              email: oreo@gmail.com
               password: secret
         required: true
       responses:
