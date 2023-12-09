@@ -1,8 +1,11 @@
-const url = '/api/v1/posts';
+const url = '/api/v1/products'
 const fileFormDOM = document.querySelector('.file-form')
 
 const nameInputDOM = document.querySelector('#name')
 const priceInputDOM = document.querySelector('#price')
+
+const titleInputDOM = document.querySelector('#title')
+const descriptionInputDOM = document.querySelector('#description')
 const imageInputDOM = document.querySelector('#image')
 
 const containerDOM = document.querySelector('.container')
@@ -43,10 +46,10 @@ const nameValue = nameInputDOM.value;
 const priceValue = priceInputDOM.value;
 try {
  
- const post = {title:nameValue,description:priceValue,image:imageValue}
+ const product = {name:nameValue,price:priceValue,image:imageValue}
  
-  await axios.post(url,post);
-  fetchPosts()
+  await axios.post(url,product);
+  fetchProducts()
 } catch (error) {
  console.log(error);
 }
@@ -54,24 +57,24 @@ try {
 
 
 
-async function fetchPosts () {
+async function fetchProducts () {
  try {
-  const {data:{posts}} = await axios.get(url`/home`);
+  const {data:{products}} = await axios.get(url);
   
-  const postsDOM = posts.map((post)=>{
+  const productsDOM = products.map((product)=>{
 return `<article class="product">
-<img src="${post.image}" alt="${post.title}" class="img"/>
+<img src="${product.image}" alt="${product.name}" class="img"/>
 <footer>
-<p>${post.title}</p>
-<span>$${post.description}</span>
+<p>${product.name}</p>
+<span>$${product.price}</span>
 </footer>
 </article>`
   }).join('')
-  containerDOM.innerHTML = postsDOM
+  containerDOM.innerHTML = productsDOM
  } catch (error) {
   console.log(error);
  }
  
 }
 
-fetchPosts()
+fetchProducts()
