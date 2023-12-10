@@ -9,6 +9,13 @@ const cors = require('cors');
 const xss = require('xss-clean');
 const rateLimiter = require('express-rate-limit');
 
+// swagger
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./wander-wise-openapi3_0.yaml');
+
+
+
 // image upload and cloudinary storage hosting
 const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
@@ -53,6 +60,11 @@ app.use(xss());
 app.get('/', (req, res) => {
   res.send('<h1>File Upload Starter</h1>');
 });
+
+app.get('/', (req, res) => {
+  res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
+});
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobsRouter);
