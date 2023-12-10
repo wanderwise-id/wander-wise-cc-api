@@ -1,6 +1,8 @@
-
 const Product = require('../models/Product.js');
 const { StatusCodes } = require('http-status-codes');
+const CustomError = require('../errors');
+const cloudinary = require('cloudinary').v2;
+const fs = require('fs');
 
 // const createProduct = async (req, res) => {
 //   const product = await Product.create(req.body);
