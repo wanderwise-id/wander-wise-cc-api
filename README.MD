@@ -1,8 +1,22 @@
 #### REST-API DOCUMENTATION
 
+#### API-DOCUMENTATION
 ```bash
 https://wander-wise-api-1-7mqffet5fa-as.a.run.app/api-docs/
 ```
+
+#### TEST CREATE PRODUCT CONTENT
+```bash
+https://wander-wise-api-1-7mqffet5fa-as.a.run.app/api/v1/products/
+```
+
+Form-data multipart enctype
+```
+name: String
+price: Number
+image: File
+```
+
 
 #### Setup
 
