@@ -68,8 +68,8 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobsRouter);
-// app.use('/api/v1/posts', authenticateUser, postsRouter);
-app.use('/api/v1/posts', postsRouter);
+app.use('/api/v1/posts', authenticateUser, postsRouter);
+// app.use('/api/v1/posts', postsRouter);
 app.use('/api/v1/products', productRouter);
 
 app.use(notFoundMiddleware);
