@@ -35,6 +35,7 @@ const authRouter = require('./routes/auth');
 const jobsRouter = require('./routes/jobs');
 const postsRouter = require('./routes/posts');
 const productRouter = require('./routes/productRoutes');
+const citiesRouter = require('./routes/cities');
 
 // error handler
 const notFoundMiddleware = require('./middleware/not-found');
@@ -71,6 +72,7 @@ app.use('/api/v1/jobs', jobsRouter);
 app.use('/api/v1/posts', authenticateUser, postsRouter);
 // app.use('/api/v1/posts', postsRouter);
 app.use('/api/v1/products', productRouter);
+app.use('/api/v1/cities', citiesRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
