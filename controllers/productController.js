@@ -6,7 +6,14 @@ const fs = require('fs');
 
 const createProductOriginal = async (req, res) => {
   const product = await Product.create(req.body);
-  res.status(StatusCodes.CREATED).json({ product });
+  res.status(StatusCodes.CREATED).json({
+    msg: 'Product created',
+    data: {
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    }
+  });
 };
 
 const getAllProducts = async (req, res) => {
