@@ -16,7 +16,15 @@ const uploadPostImage = async (req, res) => {
     folder: 'file-upload',
   });
   fs.unlinkSync(req.files.image.tempFilePath);
-  return res.status(StatusCodes.OK).json({ image: { src: result.secure_url}});
+
+  return res.status(StatusCodes.OK).json({ 
+    error: false,
+    msg: 'Success upload image',
+    data: {
+      image: { 
+        src: result.secure_url
+      }}
+  });
 };
 
 module.exports ={ 
