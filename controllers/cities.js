@@ -8,8 +8,7 @@ const createCity = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ 
     error: false,
     msg: 'Success create city',
-    data: city,
-   });
+    data: city });
 }
 
 module.exports = {

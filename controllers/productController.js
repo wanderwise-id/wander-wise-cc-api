@@ -28,42 +28,42 @@ const getAllProducts = async (req, res) => {
 
 const createProductFormMultipart = async (req, res) => {
   // Extract product data from request body
-  const { name, price, image } = req.body;
+  const { name, price } = req.body;
 
-  // Validate product data (you may want to add more validation)
-  if (!name || !price) {
-    throw new CustomError.BadRequestError('Product name and price are required.');
+  // Extract image from request files
+  const { image } = req.files;
+
+  // Check if image is uploaded
+  if (!image) {
+    throw new CustomError.BadRequestError('Please upload an image');
   }
 
-  // Check if image file is present in the request
-  // if (!req.files || !req.files.image) {
-  //   throw new CustomError.BadRequestError('Image file is required.');
-  // }
-
-  // Handle image upload
+  // generate filename with date and random string
   const date = Date.now();
-  const randomString = Math.random().toString(36).substring(2, 8);
-  const newfileName = `${randomString}-${date}`;
-
-  const result = await cloudinary.uploader.upload(req.files.image.tempFilePath, {
+  const randomString = Math.random().toString(36).substring(2, 7);
+  const newFileName = `${randomString}-${date}`;
+  
+  // Upload image to cloudinary
+  const result = await cloudinary.uploader.upload(image.tempFilePath, {
     use_filename: true,
-    filename: newfileName,
+    filename: newFileName,
     folder: 'file-upload',
   });
 
-  // Remove the temporary file
-  fs.unlinkSync(req.files.image.tempFilePath);
+  // Delete image from local storage
+  fs.unlinkSync(image.tempFilePath);
 
-  // Create a new product in the database with image URL
+  // Create product
   const product = await Product.create({
     name,
     price,
     image: result.secure_url,
   });
 
-  res.status(StatusCodes.CREATED).json({ 
+  // Send response
+  res.status(StatusCodes.CREATED).json({
     error: false,
-    msg: 'Product created', 
+    msg: 'Product created',
     data: {
       name: product.name,
       price: product.price,

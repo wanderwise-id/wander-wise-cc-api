@@ -15,6 +15,7 @@ const uploadPostImage = async (req, res) => {
     filename: newFileName,
     folder: 'file-upload',
   });
+  
   fs.unlinkSync(req.files.image.tempFilePath);
 
   return res.status(StatusCodes.OK).json({ 
