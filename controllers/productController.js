@@ -29,16 +29,17 @@ const getAllProducts = async (req, res) => {
 const createProductFormMultipart = async (req, res) => {
   // Extract product data from request body
   const { name, price } = req.body;
+  const {image}  = req.files;
 
   // Validate product data (you may want to add more validation)
-  // if (!name || !price) {
-  //   throw new CustomError.BadRequestError('Product name and price are required.');
-  // }
+  if (!name || !price) {
+    throw new CustomError.BadRequestError('Product name and price are required.');
+  }
 
   // Check if image file is present in the request
-  // if (!req.files || !req.files.image) {
-  //   throw new CustomError.BadRequestError('Image file is required.');
-  // }
+  if (!req.files || !req.files.image) {
+    throw new CustomError.BadRequestError('Image file is required.');
+  }
 
   // Handle image upload
   const date = Date.now();
