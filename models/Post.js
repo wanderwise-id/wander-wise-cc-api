@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, 'Please provide title'],
+    // required: [true, 'Please provide title'],
     maxLength: 100,
   },
   image: {
@@ -12,13 +12,13 @@ const PostSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: [true, 'Please provide description'],
+    // required: [true, 'Please provide description'],
     maxLength: 500,
   },
   createdBy: {
     type: mongoose.Types.ObjectId,
     ref: 'User',
-    require: [true, 'Please provide user'],
+    // require: [true, 'Please provide user'],
   },
 }, { timestamps: true });
 
